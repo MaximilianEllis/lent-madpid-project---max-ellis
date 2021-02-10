@@ -17,7 +17,7 @@ sprites.onDestroyed(SpriteKind.Food, function (sprite) {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Food)
-    mySprite.setPosition(randint(0, 100), randint(0, 100))
+    mySprite.setPosition(randint(20, 80), randint(0, 100))
     info.changeScoreBy(1)
     info.startCountdown(2)
     info.changeLifeBy(-1)
@@ -27,7 +27,6 @@ info.onCountdownEnd(function () {
 })
 info.onLifeZero(function () {
     game.setDialogTextColor(10)
-    game.showLongText("well done! now level 2", DialogLayout.Bottom)
     music.baDing.play()
     scene.setBackgroundImage(img`
         8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -153,6 +152,8 @@ info.onLifeZero(function () {
         `)
     controller.moveSprite(mySprite2, 150, 150)
     info.startCountdown(1.5)
+    game.showLongText("well done! now level 2", DialogLayout.Bottom)
+    info.setLife(30)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     mySprite.destroy(effects.disintegrate, 200)
